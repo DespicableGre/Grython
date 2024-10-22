@@ -8,7 +8,7 @@ maze = [ 5 , 5 ]
 startingpos = [ -(maze[0]-1)/2*16 , (maze[1]-1)/2*16 ] # ignore this
 grid = []
 
-shapes = ["other.gif", "wall_right.gif", "wall_up.gif", "wall_left.gif", "wall_bottom.gif", "filled.gif"]
+shapes = ["other.gif", "wall_right.gif", "wall_up.gif", "wall_left.gif", "wall_down.gif", "filled.gif"]
 wn = trtl.Screen()
 wn.addshape(shapes[0])
 wn.addshape(shapes[1])
@@ -81,12 +81,25 @@ for y in range(maze[1]):
 # Screensaver
 
 arrow = trtl.Turtle(shape="arrow")
-arrow.color("pink")
+arrow.color("lime")
 arrow.speed(0)
 
 while(True):
-    arrow.forward(1)
-    arrow.right(10)
-    arrow.left(random.random() * 10 )
+    goWhere = random.randrange(0,4,1)
+    if (goWhere == 0):
+        arrow.left(3)
+        arrow.forward(1)
+    if (goWhere == 1):
+        arrow.right(3)
+        arrow.forward(1)
+    if (goWhere == 2):
+        arrow.forward(1)
+    if (goWhere == 3):
+        arrow.right(45)
+        arrow.forward(1)
+    if (goWhere == 4):
+        arrow.left(45)
+        arrow.forward(1)
+
 
 trtl.mainloop()
